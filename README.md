@@ -24,13 +24,21 @@ Using the default toggle profile, this means that you can use this channel to to
 
 The configuration for the `LCNSerial` consists of the following parameters:
 
-| Parameter           | Description                                                                                                 |
-|---------------------|-------------------------------------------------------------------------------------------------------------|
-| serialPort          | The serial port where the P1-port is connected to (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`) (mandatory) |
-| receivedTimeout     | The time out period in which messages are expected to arrive, default is 120 seconds   
+| Parameter            | Type    | Description                                                                                         |
+|----------------------|---------------------------------------------------------------------------------------------------------------|
+| serialPort           | String  | The serial port where the P1-port is connected to                                                   |
+|                      |         | (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`) (mandatory)                                           |
+| lcn_id               |  int    |  LCN-Adress of the LCN-Module                                                                       |
+| Shutter1_enabled     | boolean |              tbd                                                                                    |
+| Shutter1_drivetime   | int     |              tbd                                                                                    | | Shutter1_overalltime | int     |              tbd                                                                                    | 
+| Shutter2_enabled     | boolean |              tbd                                                                                    |
+| Shutter2_drivetime   | int     |              tbd                                                                                    | | Shutter2_overalltime | int     |              tbd                                                                                    | | Shutter3_enabled     | boolean |              tbd                                                                                    |
+| Shutter3_drivetime   | int     |              tbd                                                                                    | | Shutter3_overalltime | int     |              tbd                                                                                    |
+| Shutter4_enabled     | boolean |              tbd                                                                                    |
+| Shutter4_drivetime   | int     |              tbd                                                                                    | | Shutter4_overalltime | int     |              tbd                                                                                    | 
+
 
 ## Channels
-
 
 | Channel       | Type          | Description                |
 | ------------- |---------------|--------------------------- |
