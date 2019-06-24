@@ -25,7 +25,7 @@ Using the default toggle profile, this means that you can use this channel to to
 The configuration for the `LCNSerial` consists of the following parameters:
 
 | Parameter            | Type    | Description                                                                                         |
-|----------------------|---------------------------------------------------------------------------------------------------------------|
+|----------------------|---------|-----------------------------------------------------------------------------------------------------|
 | serialPort           | String  | The serial port where the P1-port is connected to                                                   |
 |                      |         | (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`) (mandatory)                                           |
 | lcn_id               |  int    |  LCN-Adress of the LCN-Module                                                                       |
