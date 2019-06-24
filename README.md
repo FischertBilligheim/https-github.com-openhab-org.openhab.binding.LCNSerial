@@ -32,22 +32,22 @@ The configuration for the `LCNSerial` consists of the following parameters:
 ## Channels
 
 
-| Channel       | Type     | Description                |
-| ------------- |----------|--------------------------- |
-| Output1       | int      |                            |
-| Output2       | int      |                            |
-| Relais_Bit1   | int      |                            |
-| Relais_Bit2   | int      |                            |
-| Relais_Bit3   | int      |                            |
-| Relais_Bit4   | int      |                            |
-| Relais_Bit5   | int      |                            |
-| Relais_Bit6   | int      |                            |
-| Relais_Bit7   | int      |                            |
-| Relais_Bit8   | int      |                            |
-| Shutter1      | int      |                            |
-| Shutter2      | int      |                            |
-| Shutter3      | int      |                            |
-| Shutter4      | int      |                            |
+| Channel       | Type          | Description                |
+| ------------- |---------------|--------------------------- |
+| Output1       | Dimmer        |              tbd           |
+| Output2       | Dimmer        |              tbd           |
+| Relais_Bit1   | Switch        |              tbd           |
+| Relais_Bit2   | Switch        |              tbd           |
+| Relais_Bit3   | Switch        |              tbd           |
+| Relais_Bit4   | Switch        |              tbd           |
+| Relais_Bit5   | Switch        |              tbd           |
+| Relais_Bit6   | Switch        |              tbd           |
+| Relais_Bit7   | Switch        |              tbd           |
+| Relais_Bit8   | Switch        |              tbd           |
+| Shutter1      | Rollershutter |              tbd           |
+| Shutter2      | Rollershutter |              tbd           |
+| Shutter3      | Rollershutter |              tbd           |
+| Shutter4      | Rollershutter |              tbd           |
 
 
 
