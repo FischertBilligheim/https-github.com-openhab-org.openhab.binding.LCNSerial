@@ -56,7 +56,9 @@ The configuration for the `LCNSerial` consists of the following parameters:
 | Shutter3      | Rollershutter |              tbd           |
 | Shutter4      | Rollershutter |              tbd           |
 
-
+## Configuration Paper-UI
+![Paper-UI1](./Configuration1.jpg)
+![Paper-UI2](./Configuration2.jpg)
 
 
 
