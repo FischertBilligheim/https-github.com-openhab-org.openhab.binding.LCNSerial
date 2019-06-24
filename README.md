@@ -82,7 +82,7 @@ demo.sitemap:
 sitemap demo label="Main Menu"
 {
     Frame {
-        Switch item=MyLight label="My Light"
+        TBD
     }
 }
 ```
