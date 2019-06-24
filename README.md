@@ -61,19 +61,19 @@ The configuration for the `LCNSerial` consists of the following parameters:
 demo.things:
 
 ```
-serialbutton:button:mybutton "My Button" [ port="/dev/ttyS0" ]
+TBD
 ```
 
 demo.items:
 
 ```
-Switch MyLight { channel="serialbutton:button:mybutton:button" }
+TBD
 ```
 
 _Note:_ This is a trigger channel, so you will most likely bind a second (state) channel to your item, which will control your physical light, so you might end up with the following, if you want to use your button with a Hue bulb:
 
 ```
-Switch MyLight { channel="hue:0210:1:bulb1:color,serialbutton:button:mybutton:button" }
+TBD
 ```
 
 demo.sitemap:
