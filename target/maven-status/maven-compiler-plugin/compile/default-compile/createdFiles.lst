@@ -1,0 +1,6 @@
+org\openhab\binding\lcnserial\internal\handler\EventHandlers.class
+org\openhab\binding\lcnserial\internal\handler\LCNSerialHandler.class
+org\openhab\binding\lcnserial\internal\handler\SerialReadThread.class
+org\openhab\binding\lcnserial\internal\LCNSerialHandlerFactory.class
+org\openhab\binding\lcnserial\internal\handler\LCNPort.class
+org\openhab\binding\lcnserial\internal\LCNSerialBindingConstants.class

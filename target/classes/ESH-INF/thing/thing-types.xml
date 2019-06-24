@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<thing:thing-descriptions bindingId="lcnserial" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:thing="https://openhab.org/schemas/thing-description/v1.0.0"
+	xsi:schemaLocation="https://openhab.org/schemas/thing-description/v1.0.0 https://openhab.org/schemas/thing-description-1.0.0.xsd">
+
+	<thing-type id="lcnActor">
+		<label>LCN-Modul</label>
+		<description>LCN Modul inclusive Relais etc.</description>
+
+		<channels>
+			<channel typeId="Output1" id="Output1"  >
+				<label>Output1</label>
+				<description>Output1 Channel</description> </channel>
+			<channel typeId="Output2" id="Output2">
+				<label>Output2</label>
+				<description>Output2 channel</description> </channel>
+				
+			<channel typeId="Relais" id="Relais_bit1">
+				<label>Relais_Bit1</label>
+				<description>Relais_Bit1</description> </channel>
+			<channel typeId="Relais" id="Relais_bit2">
+				<label>Relais_Bit2</label>
+				<description>Relais_Bit2</description> </channel>
+			<channel typeId="Relais" id="Relais_bit3">
+				<label>Relais_Bit3</label>
+				<description>Relais_Bit3</description> </channel>
+			<channel typeId="Relais" id="Relais_bit4">
+				<label>Relais_Bit4</label>
+				<description>Relais_Bit4</description> </channel>
+			<channel typeId="Relais" id="Relais_bit5">
+				<label>Relais_Bit5</label>
+				<description>Relais_Bit5</description> </channel>
+			<channel typeId="Relais" id="Relais_bit6">
+				<label>Relais_Bit6</label>
+				<description>Relais_Bit6</description> </channel>
+			<channel typeId="Relais" id="Relais_bit7">
+				<label>Relais_Bit7</label>
+				<description>Relais_Bit7</description> </channel>
+			<channel typeId="Relais" id="Relais_bit8">
+				<label>Relais_Bit8</label>
+				<description>Relais_Bit8</description> </channel>
+				
+			<channel typeId="Shutter" id="Shutter1">
+				<label>Shutter1</label>
+				<description>Shutter1</description> </channel>	
+			<channel typeId="Shutter" id="Shutter2">
+				<label>Shutter2</label>
+				<description>Shutter2</description> </channel>	
+			<channel typeId="Shutter" id="Shutter3">
+				<label>Shutter3</label>
+				<description>Shutter3</description> </channel>	
+			<channel typeId="Shutter" id="Shutter4">
+				<label>Shutter4</label>
+				<description>Shutter4</description> </channel>	
+											
+		</channels>
+
+		<config-description>
+			<parameter name="port" type="text">
+				<label>Serial Port</label>
+				<context>serial-port</context>
+				<required>true</required>
+				<description>The serial port that the LCN-Device is connected to</description>
+			</parameter>
+			<parameter name="lcn_id" type="integer"> <label>LCN-Id</label> <required>true</required> <description>LCN-Adress of the LCN-device</description></parameter>
+
+			<parameter name="Shutter1_enabled" type="boolean"><label>Shutter1_enabled</label><description>Shutter1 exists</description><required>false</required></parameter>			
+			<parameter name="Shutter1_drivetime" type="integer"><label>Shutter1_drivetime</label><description>Close-Ttime in sec for Shutter1</description><required>false</required></parameter>
+			<parameter name="Shutter1_overalltime" type="integer"><label>Shutter1_overalltime</label><description>Overall-Time in sec for Shutter1</description><required>false</required></parameter>
+						
+			<parameter name="Shutter2_enabled" type="boolean"><label>Shutter2_enabled</label><description>Shutter2 exists</description><required>false</required></parameter>	
+			<parameter name="Shutter2_drivetime" type="integer"><label>Shutter2_drivetime</label><description>Drivetime in sec for Shutter2</description><required>false</required></parameter>
+			<parameter name="Shutter2_overalltime" type="integer"><label>Shutter2_overalltime</label><description>Overall-Time in sec for Shutter2</description><required>false</required></parameter>
+
+			<parameter name="Shutter3_enabled" type="boolean"><label>Shutter3_enabled</label><description>Shutter3 exists</description><required>false</required></parameter>							
+			<parameter name="Shutter3_drivetime" type="text"><label>Shutter3_drivetime</label><description>Drivetime in sec for Shutter3</description><required>false</required></parameter>
+			<parameter name="Shutter3_overalltime" type="integer"><label>Shutter3_overalltime</label><description>Overall-Time in sec for Shutter3</description><required>false</required></parameter>
+
+			<parameter name="Shutter4_enabled" type="boolean"><label>Shutter4_enabled</label><description>Shutter4 exists</description><required>false</required></parameter>							
+			<parameter name="Shutter4_drivetime" type="text"><label>Shutter4_drivetime</label><description>Drivetime in sec for Shutter4</description><required>false</required></parameter>
+			<parameter name="Shutter4_overalltime" type="integer"><label>Shutter4_overalltime</label><description>Overall-Time in sec for Shutter4</description><required>false</required></parameter>
+			
+		</config-description>
+		
+	</thing-type>
+	
+	<channel-type id="Output1">
+		<item-type>Dimmer</item-type>
+		<label>Output1</label>
+	</channel-type>
+	<channel-type id="Output2">
+		<item-type>Dimmer</item-type>
+		<label>Output2</label>
+	</channel-type>
+	<channel-type id="Relais">
+		<item-type>Switch</item-type>
+		<label>Relais</label>
+	</channel-type>
+	<channel-type id="Shutter">
+		<item-type>Rollershutter</item-type>
+		<label>Shutter-Type</label>
+	</channel-type>
+</thing:thing-descriptions>
