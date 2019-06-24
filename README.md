@@ -26,9 +26,8 @@ The configuration for the `LCNSerial` consists of the following parameters:
 
 | Parameter            | Type    | Description                                                                                         |
 |----------------------|---------|-----------------------------------------------------------------------------------------------------|
-| serialPort           | String  | The serial port where the P1-port is connected to                                                   |
-|                      |         | (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`) (mandatory)                                           |
-| lcn_id               |  int    |  LCN-Adress of the LCN-Module                                                                       |
+| serialPort           | String  | The serial port where the P1-port is connected to.   (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`)  |
+| lcn_id               |  int    | LCN-Adress of the LCN-Module                                                                        |
 | Shutter1_enabled     | boolean |              tbd                                                                                    |
 | Shutter1_drivetime   | int     |              tbd                                                                                    | | Shutter1_overalltime | int     |              tbd                                                                                    | 
 | Shutter2_enabled     | boolean |              tbd                                                                                    |
@@ -61,7 +60,7 @@ The configuration for the `LCNSerial` consists of the following parameters:
 
 
 
-
+## Usage of rollershutters
 ![Relias-Modul](./LCN-R8H.jpg)
 
 ## Full Example
