@@ -22,15 +22,20 @@ The configuration for the `LCNSerial` consists of the following parameters:
 
 | Parameter            | Type    | Description                                                                                         |
 |----------------------|---------|-----------------------------------------------------------------------------------------------------|
-| port                 | String  | The serial port where the LCN-PK is connected to.   (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`)  |
+| port                 | String  | The serial port where the LCN-PK is connected to.   (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`)   |
 | lcn_id               |  int    | LCN-Adress of the LCN-Module                                                                        |
 | Shutter1_enabled     | boolean |              tbd                                                                                    |
-| Shutter1_drivetime   | int     |              tbd                                                                                    | | Shutter1_overalltime | int     |              tbd                                                                                    | 
+| Shutter1_drivetime   | int     |              tbd                                                                                    | 
+| Shutter1_overalltime | int     |              tbd                                                                                    | 
 | Shutter2_enabled     | boolean |              tbd                                                                                    |
-| Shutter2_drivetime   | int     |              tbd                                                                                    | | Shutter2_overalltime | int     |              tbd                                                                                    | | Shutter3_enabled     | boolean |              tbd                                                                                    |
-| Shutter3_drivetime   | int     |              tbd                                                                                    | | Shutter3_overalltime | int     |              tbd                                                                                    |
+| Shutter2_drivetime   | int     |              tbd                                                                                    | 
+| Shutter2_overalltime | int     |              tbd                                                                                    | 
+| Shutter3_enabled     | boolean |              tbd                                                                                    |
+| Shutter3_drivetime   | int     |              tbd                                                                                    | 
+| Shutter3_overalltime | int     |              tbd                                                                                    |
 | Shutter4_enabled     | boolean |              tbd                                                                                    |
-| Shutter4_drivetime   | int     |              tbd                                                                                    | | Shutter4_overalltime | int     |              tbd                                                                                    | 
+| Shutter4_drivetime   | int     |              tbd                                                                                    | 
+| Shutter4_overalltime | int     |              tbd                                                                                    | 
 
 
 ## Channels
