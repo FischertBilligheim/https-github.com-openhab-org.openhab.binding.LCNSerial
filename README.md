@@ -64,7 +64,16 @@ The configuration for the `LCNSerial` consists of the following parameters:
 
 
 ## Usage of rollershutters
-![Relias-Modul](./images/LCN-R8H.jpg)
+
+Rollershutters in LCN are typically connected to a "LCN-R8H" or "LCN-R4M2H" modul.
+
+![Relais-Modul](./images/LCN-R8H.jpg)
+
+2 Relais are used:
+- 1 for setting the power
+- 1 for defining the direction
+
+![Relais for Rollershutters](./images/Shutter.jpg)
 
 ## Full Example
 
