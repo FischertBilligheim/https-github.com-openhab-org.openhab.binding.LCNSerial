@@ -23,19 +23,19 @@ The configuration for the `LCNSerial` consists of the following parameters:
 | Parameter            | Type    | Description                                                                                         |
 |----------------------|---------|-----------------------------------------------------------------------------------------------------|
 | port                 | String  | The serial port where the LCN-PK is connected to.   (e.g. Linux: `/dev/ttyUSB1`, Windows: `COM2`)   |
-| lcn_id               |  int    | LCN-Adress of the LCN-Module                                                                        |
-| Shutter1_enabled     | boolean |              tbd                                                                                    |
-| Shutter1_drivetime   | int     |              tbd                                                                                    | 
-| Shutter1_overalltime | int     |              tbd                                                                                    | 
-| Shutter2_enabled     | boolean |              tbd                                                                                    |
-| Shutter2_drivetime   | int     |              tbd                                                                                    | 
-| Shutter2_overalltime | int     |              tbd                                                                                    | 
-| Shutter3_enabled     | boolean |              tbd                                                                                    |
-| Shutter3_drivetime   | int     |              tbd                                                                                    | 
-| Shutter3_overalltime | int     |              tbd                                                                                    |
-| Shutter4_enabled     | boolean |              tbd                                                                                    |
-| Shutter4_drivetime   | int     |              tbd                                                                                    | 
-| Shutter4_overalltime | int     |              tbd                                                                                    | 
+| lcn_id               |  int    | LCN-Address of the LCN-Module                                                                       |
+| Shutter1_enabled     | boolean | Does the LCN-Module has a Relais-Modul connected with Shutter1 connected?                           |
+| Shutter1_drivetime   | int     | Time in seconds the Rollershutter needs to close the window/door 100%                               | 
+| Shutter1_overalltime | int     | Time in seconds the Rollershutter needs to come to the end-position                                 | 
+| Shutter2_enabled     | boolean | Does the LCN-Module has a Relais-Modul connected with Shutter1 connected?                           |
+| Shutter2_drivetime   | int     | Time in seconds the Rollershutter needs to close the window/door 100%                               | 
+| Shutter2_overalltime | int     | Time in seconds the Rollershutter needs to come to the end-position                                 | 
+| Shutter3_enabled     | boolean | Does the LCN-Module has a Relais-Modul connected with Shutter1 connected?                           |
+| Shutter3_drivetime   | int     | Time in seconds the Rollershutter needs to close the window/door 100%                               | 
+| Shutter3_overalltime | int     | Time in seconds the Rollershutter needs to come to the end-position                                 |
+| Shutter4_enabled     | boolean | Does the LCN-Module has a Relais-Modul connected with Shutter1 connected?                           |
+| Shutter4_drivetime   | int     | Time in seconds the Rollershutter needs to close the window/door 100%                               | 
+| Shutter4_overalltime | int     | Time in seconds the Rollershutter needs to come to the end-position                                 | 
 
 
 ## Channels
