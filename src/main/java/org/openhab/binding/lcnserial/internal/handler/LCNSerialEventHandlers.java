@@ -100,11 +100,11 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     }
 	
     /**================================================================================
-    // void handleCommand(@NonNull ChannelUID channelUID, @NonNull Command command) 
-    //
-    // Central Command-Handler
-    //
-    //================================================================================*/
+     * Central Command-Handler 
+     *
+     * @param channelUID		UID of the channel
+     * @param command			command to handle
+     *================================================================================*/
     @Override
     public void handleCommand(@NonNull ChannelUID channelUID, @NonNull Command command) 
     {    
@@ -197,10 +197,14 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     }
 
     
-    /**===================================================================
-    // void handleCommand_UpDown(String strChannel, Command command)
-    //
-    //===================================================================*/
+    /**===============================================================================
+     * Handle Up/Down commands
+     * 
+     * @param strChannel		string of the channel
+     * @param command			command to execute
+     * @param withTimer			Command is called by LCN-Bus handler:
+     *                          Start a timer for the rollershutter
+     *===============================================================================*/
     private void handleCommand_UpDown(String strChannel, Command command, boolean withTimer)
     {
 		if (command.equals(UpDownType.UP))
@@ -324,7 +328,7 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
      //  
      // @param Shutter_Id
      // @param diff
-     // @return
+     // @return drivetime for the diff-range
      // ===========================================================*/
     private int CalcTimeFromDiff(int Shutter_Id, int diff)
     {
@@ -342,10 +346,14 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     	
     }
     
-    //===================================================================
-    // void handleShutterPercent(strChannel, val)
-    //
-    //===================================================================
+    /**===================================================================
+     * Handler for shutter percentage-commands
+     *
+     * @param strChannel		string of the channel
+     * @param Shutter_id		1..4 shutter
+     * @param val				new percentage value
+     *
+    //=================================================================== */
     private void handleShutterPercent(String strChannel,int Shutter_id, int val)
     {
     	int diffTime = CalculateDriveTime(Shutter_id, val);
@@ -404,10 +412,15 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
 */   	
     	return diffTime;
     }
-    //============================================================================================
-    // void StartTimer(String strChannel , int Shutter_id, int diffTime, boolean updatePos)
-    //
-    //============================================================================================
+    
+    /**============================================================================================
+     * Start a timer for driving a shutter
+     *
+     * @param strChannel		String of the channel
+     * @param Shutter_id		Shutter (1..4)
+     * @param diffTime 			Time in msec to drive
+     * @param updatePos			Shall the pos be updated at the end?
+     *============================================================================================*/
     private void StartTimer(String strChannel , int Shutter_id, int diffTime, boolean updatePos)
     {
     	Timer t = Shutter_Timers[Shutter_id];

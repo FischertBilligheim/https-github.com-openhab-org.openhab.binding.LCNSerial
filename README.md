@@ -5,7 +5,7 @@ This binding provides support for an LCN-Bussystem - with a serial interface LCN
 The binding ist tested on a Windows10-PC and a Raspberry-Pi using a LCN-PK Modul with a USB-Serial cable. 
 The serial-Port can be configured with the Thing configuration.
 
-![LCN Bus](./lcn_bus.jpg)
+![LCN Bus](./images/lcn_bus.jpg)
 
 In this first release, all Things (LCN-Modules) must use the same COM-Port.
 
@@ -58,13 +58,13 @@ The configuration for the `LCNSerial` consists of the following parameters:
 | Shutter4      | Rollershutter |              tbd           |
 
 ## Configuration Paper-UI
-![Paper-UI1](./Configuration1.jpg)
-![Paper-UI2](./Configuration2.jpg)
+![Paper-UI1](./images/Configuration1.jpg)
+![Paper-UI2](./images/Configuration2.jpg)
 
 
 
 ## Usage of rollershutters
-![Relias-Modul](./LCN-R8H.jpg)
+![Relias-Modul](./images/LCN-R8H.jpg)
 
 ## Full Example
 

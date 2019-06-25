@@ -1,7 +1,6 @@
 package org.openhab.binding.lcnserial.internal.handler;
 
 import org.eclipse.smarthome.core.thing.Channel;
-import org.openhab.binding.lcnserial.internal.LCNSerialBindingConstants;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -413,7 +412,7 @@ public class LCNPort
     //==============================================================
     // LCN_Port::ReverseBits()
     //
-    // Returns the bits of a telegam byte in reverse order
+    // Returns the bits of a telegram byte in reverse order
     //==============================================================
     char ReverseBits(char b)
     {

@@ -22,13 +22,9 @@ import org.eclipse.smarthome.core.thing.ThingStatus;
 import org.eclipse.smarthome.core.thing.ThingStatusDetail;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandler;
 
-
 import org.eclipse.smarthome.core.library.types.OnOffType;
 import org.eclipse.smarthome.core.library.types.PercentType;
 import org.eclipse.smarthome.core.types.Command;
-
-//import org.openhab.binding.lcnserial.internal.LCNSerialBindingConstants;
-//import org.openhab.binding.lcnserial.internal.handler.LCNSerialEventHandlers;
 import org.openhab.binding.lcnserial.internal.LCNSerialConfiguration;
 
 import org.slf4j.Logger;
@@ -48,7 +44,7 @@ import gnu.io.SerialPort;
 public class LCNSerialHandler extends BaseThingHandler
 {
 	private final Logger logger = LoggerFactory.getLogger(LCNSerialHandler.class); 
-	
+
 	public LCNSerialConfiguration deviceConfig = null;
 	
     public static SerialPort serialPort = null;
@@ -99,6 +95,9 @@ public class LCNSerialHandler extends BaseThingHandler
         	logger.error("Port could not be initialized {} ",deviceConfig.port, e1 );
 		}
 
+        if (myLCNPort == null)
+        	return;
+        
 		try 
 		{
 			myLCNPort.Read_Modul_All(lcnAdress);
@@ -130,8 +129,7 @@ public class LCNSerialHandler extends BaseThingHandler
         if (deviceConfig.port.isEmpty())
         	return false;
         
-        lcnAdress = deviceConfig.lcn_id;
-        
+        lcnAdress = deviceConfig.lcn_id;      
         
         return true;		
 	}
@@ -149,18 +147,21 @@ public class LCNSerialHandler extends BaseThingHandler
     		myLCNPort.SetLCNSerialHandler(lcnAdress, handler);
     		return;
     	}
-    	  	
+  	
 		CommPortIdentifier portIdentifier = CommPortIdentifier.getPortIdentifier(port);
+
 		if (portIdentifier.isCurrentlyOwned()) 
 		{
-			throw new Exception("Port is currently in use");
+        	logger.error("Port is currently owned ");
+        	return;
 		}
 
 		CommPort commPort = portIdentifier.open(this.getClass().getName(), 2000); // timeout 2 s.
 		if (!(commPort instanceof SerialPort)) 
 		{
-			throw new Exception("Only serial port is supported");
+        	logger.error("Port is not a serial port {} ",commPort.getName());
 		}
+			
 		
 		serialPort = (SerialPort) commPort;
 		
@@ -170,8 +171,7 @@ public class LCNSerialHandler extends BaseThingHandler
 	    serialPort.disableReceiveTimeout();
 	        
 	    serialPort.setRTS(false);
-	    serialPort.setDTR(true);
-	    
+	    serialPort.setDTR(true);	    
 	    
 	    //================================================
 	    //
@@ -222,7 +222,7 @@ public class LCNSerialHandler extends BaseThingHandler
 			} 
 			catch (InterruptedException | IOException e) 
 			{
-	        	e.printStackTrace();
+	        	logger.error("Exception on SetValue1() {} ", e );
 			}
     }
   
@@ -244,7 +244,7 @@ public class LCNSerialHandler extends BaseThingHandler
 				} 
 				catch (InterruptedException | IOException e) 
 				{
-		        	e.printStackTrace();
+		        	logger.error("Exception on SetValue2() {} ", e );
 				}
 
     }
@@ -266,7 +266,7 @@ public class LCNSerialHandler extends BaseThingHandler
 		} 
 		catch (InterruptedException | IOException e) 
 		{
-        	e.printStackTrace();
+        	logger.error("Exception on SetBit() {} ", e );
 		}				
     }
     
@@ -288,7 +288,7 @@ public class LCNSerialHandler extends BaseThingHandler
 			} 
 			catch (InterruptedException | IOException e) 
 			{
-	        	e.printStackTrace();
+	        	logger.error("Exception on ResetBit() {} ", e );
 			}
     }
 
