@@ -69,10 +69,10 @@ public class LCNSerialHandler extends BaseThingHandler
     }
 
     
-/**==================================
-  * void initialize()
-  *
-  *=================================== */
+	/**==================================
+	  * void initialize()
+	  *
+	  *=================================== */
 //    @Override
     public void initialize() 
     {
@@ -135,11 +135,11 @@ public class LCNSerialHandler extends BaseThingHandler
 	}
 	
     /**============================================================
-    // void initPort( String port,  LCNSerialHandler handler)
-    //
-    // Initializes the serial port to LCN-PK-Modul
-    //
-    //============================================================*/
+     * Initializes the serial port to LCN-PK-Modul
+     *
+     * 
+     *
+     *============================================================*/
     private void initPort( String port, LCNSerialHandler handler) throws Exception
     {
     	if (serialPort != null)
