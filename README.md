@@ -73,6 +73,7 @@ Rollershutters in LCN are typically connected to a "LCN-R8H" or "LCN-R4M2H" modu
 - 1 for setting the power
 - 1 for defining the direction
 
+LCNSerial currently supports up to 4 shutters - inclusive a position handling (realized by timers)
 ![Relais for Rollershutters](./images/Shutter.jpg)
 
 ## Full Example
