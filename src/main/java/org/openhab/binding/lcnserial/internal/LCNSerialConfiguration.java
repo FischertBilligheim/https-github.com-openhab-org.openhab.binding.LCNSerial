@@ -1,12 +1,16 @@
 package org.openhab.binding.lcnserial.internal;
 
-
+//====================================================
+/** Class for reading the Config-Values of the Thing
+ * 
+ * @author Thomas Fischer
+ *
+ */
+//====================================================
 public class LCNSerialConfiguration 
 {
-/**
-* Serial port name
-*/	
-	public String port;
+
+	public String port;					// Serial Port Name
 
 	public int lcn_id;
 

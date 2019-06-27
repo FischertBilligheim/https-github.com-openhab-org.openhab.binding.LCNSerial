@@ -15,12 +15,14 @@ package org.openhab.binding.lcnserial.internal;
 import org.eclipse.jdt.annotation.NonNullByDefault;
 import org.eclipse.smarthome.core.thing.ThingTypeUID;
 
+//=================================================================================
 /**
  * The {@link LCNSerialBindingConstants} class defines common constants, which are
  * used across the whole binding.
  *
  * @author Thomas Fischer - Initial contribution
  */
+//=================================================================================
 @NonNullByDefault
 public class LCNSerialBindingConstants 
 {

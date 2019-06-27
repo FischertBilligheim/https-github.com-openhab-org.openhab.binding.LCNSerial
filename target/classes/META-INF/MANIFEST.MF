@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Automatic-Module-Name: org.openhab.binding.lcnserial
-Bnd-LastModified: 1561583213777
+Bnd-LastModified: 1561662563098
 Bundle-Description: "This project contains the official add-ons of ope
  nHAB"
 Bundle-License: "Eclipse Public License 2.0";link="https://www.eclipse
@@ -15,7 +15,7 @@ Bundle-SCM: url="https://github.com/openhab/openhab2-addons/org.openha
  b.addons.reactor.bundles/org.openhab.binding.lcnserial",tag=HEAD
 Bundle-SymbolicName: org.openhab.binding.lcnserial
 Bundle-Vendor: openHAB.org
-Bundle-Version: 2.5.0.201906262106
+Bundle-Version: 2.5.0.201906271909
 Created-By: 1.8.0_211 (Oracle Corporation)
 Import-Package: org.eclipse.smarthome.core.library.types,org.eclipse.s
  marthome.core.thing,org.eclipse.smarthome.core.thing.binding,org.ecli

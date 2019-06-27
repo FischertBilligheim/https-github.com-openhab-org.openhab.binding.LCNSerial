@@ -36,31 +36,40 @@ import org.osgi.service.component.annotations.Component;
 
 @Component(service = ThingHandlerFactory.class, configurationPid = "binding.lcnserial")
 
-/**===========================================
-// Handler Factory for the LCNSerial-Binding
-//
-//===========================================*/
+//===========================================
+/**
+ * Handler Factory for the LCNSerial-Binding
+ *
+*/
+//===========================================
 @NonNullByDefault
 public class LCNSerialHandlerFactory extends BaseThingHandlerFactory 
 {
 
     private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections.singleton(LCNSerialBindingConstants.THING_TYPE_LCNSERIAL);
 
-        
-    /**==========================================================
-    //  boolean supportsThingType(ThingTypeUID thingTypeUID)  
-    //
-    //==========================================================*/
+       
+    //==========================================================
+    /**
+     *  boolean supportsThingType(ThingTypeUID thingTypeUID)  
+     *
+     * @param thingTypeUID		TypeUID to be tested
+    */
+    //==========================================================
     @Override
     public boolean supportsThingType(ThingTypeUID thingTypeUID) 
     {
         return SUPPORTED_THING_TYPES_UIDS.contains(thingTypeUID);
     }
 
-    /**==========================================================
-    //  ThingHandler createHandler(Thing thing) 
-    //
-    //==========================================================*/
+    //==========================================================
+    /**
+     *  ThingHandler createHandler(Thing thing) 
+     *
+     * @param	thing			Thing to create the handler for
+     * @return	ThimgHandler
+    */
+    ////==========================================================
     @Override
     protected @Nullable ThingHandler createHandler(Thing thing) 
     {

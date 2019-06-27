@@ -4,6 +4,12 @@ import java.util.TimerTask;
 
 import org.eclipse.smarthome.core.library.types.StopMoveType;
 
+//==============================================================
+/** Timer-Task for driving shutters
+ * 
+ * 
+*/
+//==============================================================
 public class LCNShutterTimerTask extends TimerTask 
 {
 	private String usedChannel;
@@ -11,7 +17,15 @@ public class LCNShutterTimerTask extends TimerTask
 	private int usedShutterId;
 	private boolean usedUpdatePos;
 	
-
+	//=============================================================================================================
+	/** Constructor
+	 * 
+	 * @param handler		LCNSerialEventHandlers
+	 * @param strChannel	String of channel
+	 * @param ShutterId		1..4
+	 * @param updatePos		Shall the Pos be updated?
+	 */
+	//===============================================================================================================
 	public LCNShutterTimerTask(LCNSerialEventHandlers handler, String strChannel, int ShutterId, boolean updatePos)
 	{
 		usedChannel   = strChannel;
@@ -21,6 +35,11 @@ public class LCNShutterTimerTask extends TimerTask
 	}
 
 
+	//=============================================================================================
+	/*	Timer callback
+	 * 
+	 */
+	//=============================================================================================
 	@Override
 	public void run()
 	{	

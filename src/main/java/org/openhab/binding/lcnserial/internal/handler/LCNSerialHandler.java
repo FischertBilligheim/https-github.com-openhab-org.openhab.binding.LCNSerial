@@ -69,11 +69,13 @@ public class LCNSerialHandler extends BaseThingHandler
     }
 
     
-	/**==================================
-	  * void initialize()
+    //==================================
+	/**
+	  * Initialization: 
+	  * LoadConfig values etc
 	  *
-	  *=================================== */
-//    @Override
+	  */
+    //=================================== 
     public void initialize() 
     {
         instCount ++;	// Increment InstanceCounter
@@ -114,14 +116,15 @@ public class LCNSerialHandler extends BaseThingHandler
                    
     }
 
-    /**============================================================
-     * Boolean LoadConfig()
-     *
+    //============================================================
+    /**
      * Loads the Thing-configuration data
+     *
      * 
      * @return:		true:	 everything fine  
      * @return:		false: 	Thing-configuration not ok
-     *============================================================*/
+     */
+    //============================================================
 	public Boolean LoadConfig()
 	{		       
         deviceConfig = getConfigAs(LCNSerialConfiguration.class);
@@ -134,12 +137,15 @@ public class LCNSerialHandler extends BaseThingHandler
         return true;		
 	}
 	
-    /**============================================================
+	//=============================================================================
+    /**
      * Initializes the serial port to LCN-PK-Modul
      *
-     * 
-     *
-     *============================================================*/
+     * @param 	port	String of the port
+     * @param 	handler	LCNSerialHandler
+     * @throws	Exception	Exception
+     */
+	//=============================================================================
     private void initPort( String port, LCNSerialHandler handler) throws Exception
     {
     	if (serialPort != null)
@@ -190,8 +196,10 @@ public class LCNSerialHandler extends BaseThingHandler
     
    
     //==================================
-    // void dispose()
-    //
+    /**
+     * 	dispose
+     *
+    */
     //===================================
     @Override
     public void dispose() 
@@ -204,12 +212,14 @@ public class LCNSerialHandler extends BaseThingHandler
     }
     
 
-    /**=================================================
-     * void SetValue1(int address, int value)
+    //=================================================
+    /**
+     * Sets Value1 of an LCN-Modul
      *
      * @param address	address-id of the LCN-modul
      * @param value 	value to be written to Output1
-     *=================================================*/
+     */
+    //=================================================
     public void SetValue1 (int address, int value)
     {
 			try 
@@ -226,12 +236,14 @@ public class LCNSerialHandler extends BaseThingHandler
 			}
     }
   
-    /**==================================================
-     * void SetValue2 (int address, int value)
+    //==================================================
+    /**
+     * Sets Value2 of an LCN-Modul
      *
      * @param address	address-id of the LCN-modul
      * @param value		value to be written to Output2
-    //==================================================*/
+    */
+    //==================================================
     public void SetValue2 (int address, int value)
     {
 
@@ -249,12 +261,14 @@ public class LCNSerialHandler extends BaseThingHandler
 
     }
     
-    /**============================================
-     * void SetBit(int address, int bit)
+    //============================================
+    /**
+     * Sets a Bit of a Relais of an LCN-Modul
      *
      * @param address	address-id of the LCN-modul
      * @param bit		bit-number of Relais-modul	
-     *============================================*/
+     */
+    //*============================================
     public void SetBit (int address, int bit)
     {
 		try 
@@ -270,13 +284,15 @@ public class LCNSerialHandler extends BaseThingHandler
 		}				
     }
     
-    /**==================================================
-     * void ResetBit(int address, int bit)
+    //==================================================
+    /**
+     * Resets a Bit of a Relais of an LCN-Modul
      *
      *
      * @param	address		address-id of the LCN-modul
      * @param 	bit			bit-number of Relais-modul
-     *==================================================*/
+     */
+    //*==================================================
     public void ResetBit(int address, int bit)
     {
 			try 
@@ -292,13 +308,15 @@ public class LCNSerialHandler extends BaseThingHandler
 			}
     }
 
-    /**================================================================
-     * void SendRelaisBitState(ChannelUID channelUID, int val)
+    //================================================================
+    /**
+     * Updates the RelaisBitState in OpenHAB
      *
      * @param	channelUID		UID of channel of thing
      * @param	val				state of bit ( 1 or 0)
      *
-     *================================================================*/
+     */
+    //================================================================
     public void SendRelaisBitState(ChannelUID channelUID, int val)
     {
     	logger.info(String.format("SendRelaisBitState:  ChannelUID: %s, Value: %d", channelUID, val ));
@@ -309,13 +327,15 @@ public class LCNSerialHandler extends BaseThingHandler
 			updateState(channelUID, OnOffType.OFF);
     }
     
-    /**==========================================================
-     * void SendOutputState(ChannelUID channelUID, int val)
+    //==========================================================
+    /**
+     * Updates the OutputState in OpenHAB
      *
      * @param	channelUID		UID of channel of thing
      * @param	val				value (Percent type)
      *
-     *==========================================================*/
+     */
+    //==========================================================
     public void SendOutputState(ChannelUID channelUID, int val)
     {
     	logger.info(String.format("SendOutputState:  ChannelUID: %s, Value: %d", channelUID, val ));

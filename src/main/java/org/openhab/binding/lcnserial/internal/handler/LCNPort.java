@@ -10,13 +10,15 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.OutputStream;
 
-/** ====================================================================
+//====================================================================
+/** 
  * The {@link LCNPort} class handles the communication with the LCN-Bus. 
  * It can send, receive and interpret bus-telegrams
  * 
  * @author Thomas Fischer
  *
- * ======================================================================*/
+*/
+//======================================================================
 public class LCNPort 
 {
 	//===================================
@@ -43,10 +45,14 @@ public class LCNPort
 	
 	private final Logger logger = LoggerFactory.getLogger(LCNPort.class);
 	
-	/**===================================
+	//=====================================================
+	/**
 	 * Constructor LCNPort
 	 *
-	//=================================== */
+	 * @param	serPort			Serial Port
+ 	 * @throws	IOException     IOException
+	 */
+	//=====================================================
 	public LCNPort(SerialPort serPort) throws IOException
 	{
 		myPort = serPort;
@@ -55,24 +61,28 @@ public class LCNPort
 		in  = myPort.getInputStream();
 	}
      
-	/**=====================================================================
+	//=====================================================================
+	/**
 	 * Stores the LCNSerial-ThingHandler in the myHandlers array
 	 * 
 	 * @param	Address		Address of the LCN-Modul
 	 * @param	handler		Thing-Handler for the LCN-Modul
-	 *===================================================================== */
+	 */
+	 //===================================================================== 
     public void SetLCNSerialHandler(int Address, LCNSerialHandler handler)
     {
     	myHandlers[Address] = handler;   	
     }
   
-	/**=====================================================================
+    //=====================================================================
+	/**
 	 * void SetNew_Out1_Cashed_Value(int Address, int val)
 	 *
 	 * @param	Address		Address of the LCN-Modul
 	 * @param	val
 	 *
-	 *===================================================================== */
+	 */
+    //===================================================================== 
     private void SetNew_Out1_Cashed_Value(int Address, int val)
     {
         LCN_Module_valueArray[Address][Out1] = val;
@@ -81,13 +91,15 @@ public class LCNPort
         myHandlers[Address].SendOutputState(chn.getUID(), val);       
     }
    
-	/**=====================================================================
+    //=====================================================================
+	/**
 	 * void SetNew_Out2_Cashed_Value(int Address, int val)
 	 *
 	 * @param	Address		Address of the LCN-Modul
 	 * @param	val
 	 * 
-	 *===================================================================== */
+	 */
+    //=====================================================================
     private void SetNew_Out2_Cashed_Value(int Address, int val)
     {
         LCN_Module_valueArray[Address][Out2] = val;
@@ -96,13 +108,15 @@ public class LCNPort
         myHandlers[Address].SendOutputState(chn.getUID(), val);       
     }
     
-	/**=====================================================================
+    //=====================================================================
+	/**
 	 * void SetNew_Relais_Cashed_Value(int Address, int val)
 	 *
 	 * @param	Address		Address of the LCN-Modul
 	 * @param	val	 
 	 * 
-	 *===================================================================== */
+	 */
+    //*===================================================================== 
     private void SetNew_Relais_Cashed_Value(int Address, int val)
     {
     	int oldVal =  LCN_Module_valueArray[Address][Relais];
@@ -140,12 +154,14 @@ public class LCNPort
         
     }
     
- 	/**==============================================================
+    //==============================================================
+ 	/**
  	 * Sends a Telegram to the LCN-Bus 
  	 *
  	 * @param tosend
  	 * @param len
- 	 *============================================================== */
+ 	 */
+    //*============================================================== 
  	void SendTelegram(char[] tosend, int len) throws InterruptedException, IOException
  	{
 		myPort.setRTS(true);
@@ -160,7 +176,8 @@ public class LCNPort
 	    myPort.setRTS(false);	 
  	}
  
- 	/**===========================================================================================
+ 	//===========================================================================================
+ 	/**
  	 * Reads an amount of bytes from the LCN-Bus
  	 *
  	 * Java has no unsigned byte type. So we have to use char's
@@ -173,7 +190,8 @@ public class LCNPort
  	 * @return	Length of read-bytes
  	 * @throws	InterruptedException	InterruptedException
  	 * @throws	IOException				IOException
- 	 *============================================================================================ */
+ 	 */
+ 	//============================================================================================ 
  	public int ReadBytes(char[] cmdChar, int len) throws  InterruptedException, IOException
  	{
 		while (in.available() < len)
@@ -194,13 +212,16 @@ public class LCNPort
 		return len;
  	}
  
-	/**==============================================================
+ 	//==============================================================
+	/**
 	 * Read one char/byte from the LCN-Bus
 	 *
 	 * Java has no unsigned byte type. So we have to use char's
 	 * 
+	 * @return	read char
 	 * @throws IOException	IOException
-	 *============================================================== */
+	 */
+ 	//============================================================== 
 	public char ReadByte() throws IOException
 	{
 		byte[] cmd = new byte[1];
@@ -213,11 +234,16 @@ public class LCNPort
 		return ret;
 	}
  
- 	/**==============================================================
+	//==============================================================
+ 	/**
  	 * Read an 8-byte telegram from the LCN-Bus
  	 *
  	 * @param	cmd		Output array for the read-telegram
- 	 *============================================================== */
+ 	 * @return	Length of read-bytes
+ 	 * @throws	InterruptedException	InterruptedException
+ 	 * @throws	IOException				IOException
+ 	 */
+	//============================================================== 
     public int ReadTelegram(char[] cmd) throws InterruptedException, IOException
 	{
 		ReadBytes(cmd, 8);
@@ -241,11 +267,14 @@ public class LCNPort
 	}
 
     
-    /**==============================================================
-     * void LCN_Port::HandleTelegram
-     *
+    //==============================================================
+    /**
      * Interprets a new telegram from the LCN-Bus
-     *============================================================== */
+     *
+     * @param	data		Array with the-telegram
+     * @param   bytelen		length of telegram
+     */
+    //==============================================================
     public void HandleTelegram(char[] data, int bytelen)
     {
     	if (bytelen == 0)
@@ -428,11 +457,14 @@ public class LCNPort
     }
 
     
-    /**==============================================================
+    //==============================================================
+    /**
      * Returns the bits of a telegram byte in reverse order
      *
-     * 
-     *============================================================== */
+     * @param	b		 char with the bits to be reversed
+     * @return	reversed bits of char
+     */
+    //============================================================== 
     char ReverseBits(char b)
     {
 	 	int tst = (b & 0x80) >> 7;
@@ -446,10 +478,15 @@ public class LCNPort
 	 	return (char)tst;
     }
 	
-	/**========================================================
+    //========================================================
+	/**
 	 * Calculates the CRC-Byte of an LCN-telegram
 	 *
-	 *======================================================== */
+	 * @param	tele	char-array with the telegram
+	 * @param	len		length of telegram
+	 * @return	Calculated CRC
+	 */
+    //======================================================== 
 	public char crc16_Calc(char[] tele, int len)
 	{
 		int i, result, transformed;
@@ -473,11 +510,15 @@ public class LCNPort
 		return ((char)result);
 	}
 
-	/**========================================================================
+	//========================================================================
+	/**
 	 * Calculates the CRC-Byte of an LCN-telegram and overwrites the telegram
 	 *
-	 *
-	 *======================================================================== */
+	 * @param	tele	char-array with the telegram
+	 * @param	len		length of telegram
+	 * @return	Calculated CRC
+	 */
+	//*======================================================================== 
 	public char crc16_Manip(char[] tele, int len)
 	{
 		int i, result, transformed;
@@ -503,11 +544,16 @@ public class LCNPort
 		return ((char)result);
 	}
 	
-	 /**==============================================================
-	  * Sets output 1 from an LCN-Modul
+	//==============================================================
+	 /**
+	  * Sets output-1 from an LCN-Modul
 	  *
-	  *
-	  *============================================================== */
+	  * @param	Address		Address of the LCN-Modul
+	  * @param	Value		Value to set
+ 	  * @throws	InterruptedException	InterruptedException
+ 	  * @throws	IOException				IOException
+	  */
+	//*============================================================== 
 	 public void SetOut1(int Address, int Value) throws InterruptedException, IOException
 	 {
 	 	char[] tosend = { 0x80, 0x04, 0x89, 0x00, (char)Address, 0x04, (char)(Value / 2), 0x04};
@@ -517,11 +563,16 @@ public class LCNPort
 	 	SendTelegram(tosend, 8);
 	 }
 	
-	 /**==============================================================
-	  * Sets output 2 from an LCN-Modul
+	 //==============================================================
+	 /**
+	  * Sets output-2 from an LCN-Modul
 	  *
-	  *
-	  *============================================================== */
+	  * @param	Address		Address of the LCN-Modul
+	  * @param	Value		Value to set
+ 	  * @throws	InterruptedException	InterruptedException
+ 	  * @throws	IOException				IOException
+	  */
+	 //============================================================== 
 	 public void SetOut2(int Address, int Value) throws InterruptedException, IOException
 	 {
 	 	char[] tosend = { 0x80, 0x04, 0x89, 0x00, (char)Address, 0x05, (char)(Value / 2), 0x04};
@@ -531,11 +582,16 @@ public class LCNPort
 	 	SendTelegram(tosend, 8);
 	 }
 
-	//==============================================================
-	// void Send_Key(int Address, int Key_Id)
-	//
-	//
-	//==============================================================
+	//===============================================================================
+	/**
+	 * Send a Key to an LCN-Modul
+	 * 
+	 * @param Address
+	 * @param Key_Id
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
+	//===============================================================================
 	void Send_Key(int Address, int Key_Id) throws InterruptedException, IOException
 	{
 		int Para = (0x1 << (Key_Id - 1));
@@ -547,9 +603,13 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// void Read_Modul_All(int Address)
-	//
-	//
+	/**
+	 * void Read all Infos from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//==============================================================
 	void Read_Modul_All(int Address) throws InterruptedException, IOException
 	{
@@ -560,9 +620,13 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// void Read_Modul_Out1(int Address)
-	//
-	//
+	/**
+	 * Read Out1 from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//==============================================================
 	void  Read_Modul_Out1(int Address) throws InterruptedException, IOException
 	{
@@ -573,9 +637,13 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// void Read_Modul_Out2(int Address)
-	//
-	//
+	/**
+	 * Read Out2 from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//==============================================================
 	void  Read_Modul_Out2(int Address) throws InterruptedException, IOException
 	{
@@ -586,9 +654,13 @@ public class LCNPort
 	}
 
 	//==============================================================
-	// void Read_Modul_Outs(int Address)
-	//
-	//
+	/**
+	 * Read Out1 and Out2 from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//==============================================================
 	void  Read_Modul_Outs(int Address) throws InterruptedException, IOException
 	{
@@ -599,9 +671,11 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// void Read_Modul_Relais(int Address)
-	//
-	// TODO: Implement a call on the bus....
+	/**
+	 * Read the Relais States from a LCN-Modul
+	 * 
+	 * @param Address
+	 */
 	//==============================================================
 	void  Read_Modul_Relais(int Address)
 	{
@@ -609,9 +683,14 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// InvertBit(int Address, int Bit_Nr)
-	//
-	//
+	/**
+	 * Invert a Relais-Bit from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @param Bit_Nr
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//==============================================================
 	void InvertBit(int Address, int Bit_Nr) throws InterruptedException, IOException
 	{
@@ -624,9 +703,14 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// SetBit(int Address, int Bit_Nr)
-	//
-	//
+	/**
+	 * Set a Relais-Bit from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @param Bit_Nr
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//==============================================================
 	void SetBit(int Address, int Bit_Nr) throws InterruptedException, IOException
 	{
@@ -639,9 +723,14 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// ResetBit(int Address, int Bit_Nr)
-	//
-	//
+	/**
+	 * Reset a Relais-Bit from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @param Bit_Nr
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//==============================================================
 	void ResetBit(int Address, int Bit_Nr) throws InterruptedException, IOException
 	{
@@ -654,8 +743,12 @@ public class LCNPort
 	}
 	
 	//=====================================
-	// void ReadAllStates()
-	//
+	/**
+	 * Read all States from all LCN-Moduls
+	 * 
+	 * @throws InterruptedException
+	 * @throws IOException
+	 */
 	//====================================
 	void ReadAllStates() throws InterruptedException, IOException
 	{
@@ -669,27 +762,37 @@ public class LCNPort
 		Read_Modul_All(31);
 	}
 
-	//=====================================
-	// int GetCurrentOut1(int Address)
-	//
-	//====================================
+	//================================================
+	/**
+	 * Return the cashed Out1-Value from a LCN-Modul
+	 * 
+	 * @param Address
+	 */
+	//================================================
 	int GetCurrentOut1(int Address)
 	{
 		return LCN_Module_valueArray[Address][Out1];
 	}
 	
-	//=====================================
-	// int GetCurrentOut2(int Address)
-	//
-	//====================================
+	//===============================================
+	/**
+	 * Return the cashed Out2-Value from a LCN-Modul
+	 * 
+	 * @param Address
+	 */
+	//===============================================
 	int GetCurrentOut2(int Address)
 	{
 		return LCN_Module_valueArray[Address][Out2];
 	}
 
 	//===============================================
-	// int GetCurrentRelaisBit(int Address, int bit)
-	//
+	/**
+	 * Return the cashedRelais-Bit from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @param bit
+	 */
 	//===============================================
 	int GetCurrentRelaisBit(int Address, int bit)
 	{
@@ -700,9 +803,12 @@ public class LCNPort
 	}
 	
 	//==============================================================
-	// int GetCurrentRelais(int Address)
-	//
-	// 
+	/**
+	 * Return all cashedRelais-Bits from a LCN-Modul
+	 * 
+	 * @param Address
+	 * @param bit
+	 */
 	//==============================================================
 	int  GetCurrentRelais(int Address)
 	{

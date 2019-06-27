@@ -16,11 +16,13 @@ import org.slf4j.LoggerFactory;
 import java.util.Timer;
 
 
-/**===================================================================
- * public class LCNSerialEventHandlers extends LCNSerialHandler
+//===================================================================
+/**
+ * LCNSerialEventHandlers extends LCNSerialHandler
  *
  *
- * ===================================================================*/
+ */
+//===================================================================
 public class LCNSerialEventHandlers extends LCNSerialHandler 
 {
 	private final Logger logger = LoggerFactory.getLogger(LCNSerialEventHandlers.class); 	
@@ -51,21 +53,25 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
 	private Timer	[] Shutter_Timers       = { null, null, null, null };
 	
 	
-	/** =================================================
-	 *  LCNSerialEventHandlers(Thing thing)
+	//=================================================
+	/** 
+	 *  Constructor
 	 *  
 	 *  Constructor
-	 * @param thing
-	 * =================================================*/
+	 * @param thing		OpenHAB-Thing
+	 */
+	// =================================================
 	public LCNSerialEventHandlers(Thing thing) 
 	{
 		super(thing);	
 	}
 
-	/** ====================================================
-	 *  void initialize() 
+	//====================================================
+	/** 
+	 *  Initialization of data structures 
 	 * 
-	 * =====================================================*/
+	 */
+	// =====================================================
     @Override
     public void initialize() 
     {
@@ -99,12 +105,14 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     	
     }
 	
-    /**================================================================================
+    //================================================================================
+    /**
      * Central Command-Handler 
      *
      * @param channelUID		UID of the channel
      * @param command			command to handle
-     *================================================================================*/
+     */
+    //================================================================================
     @Override
     public void handleCommand(@NonNull ChannelUID channelUID, @NonNull Command command) 
     {    
@@ -196,15 +204,16 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
       
     }
 
-    
-    /**===============================================================================
+    //===============================================================================
+    /**
      * Handle Up/Down commands
      * 
      * @param strChannel		string of the channel
      * @param command			command to execute
      * @param withTimer			Command is called by LCN-Bus handler:
      *                          Start a timer for the rollershutter
-     *===============================================================================*/
+     */
+    //===============================================================================
     private void handleCommand_UpDown(String strChannel, Command command, boolean withTimer)
     {
 		if (command.equals(UpDownType.UP))
@@ -322,14 +331,16 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
 			
     }
     
-    /** ==========================================================
+    // ==========================================================
+    /**
      //  int CalcTimeFromDiff(int Shutter_Id, int diff)
      //  
      //  
      // @param Shutter_Id
      // @param diff
      // @return drivetime for the diff-range
-     // ===========================================================*/
+     */
+    // ===========================================================
     private int CalcTimeFromDiff(int Shutter_Id, int diff)
     {
     	long wrk = 0;
@@ -346,14 +357,16 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     	
     }
     
-    /**===================================================================
+    //===================================================================
+    /**
      * Handler for shutter percentage-commands
      *
      * @param strChannel		string of the channel
      * @param Shutter_id		1..4 shutter
      * @param val				new percentage value
      *
-    //=================================================================== */
+    */
+    //=================================================================== 
     private void handleShutterPercent(String strChannel,int Shutter_id, int val)
     {
     	int diffTime = CalculateDriveTime(Shutter_id, val);
@@ -377,12 +390,15 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
 
     
     // ===================================================================
-    //  Calculate the needed time to drive
-    //
-    //   diff           x
-    //   ----    =  ----------          x =(Drivetime * diff) / 100 (s)
-    //   100         Drivetime          x =(Drivetime * diff) * 10  (ms)    
-    //
+    /**
+     *  Calculate the needed time to drive
+     *
+     *   diff           x
+     *   ----    =  ----------          x =(Drivetime * diff) / 100 (s)
+     *   100         Drivetime          x =(Drivetime * diff) * 10  (ms)    
+     *
+     * @param	Shutter_id		1..4
+     */
     // ===================================================================
     int CalculateDriveTime(int Shutter_id, int newVal)
     {
@@ -413,14 +429,16 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     	return diffTime;
     }
     
-    /**============================================================================================
+    //============================================================================================
+    /**
      * Start a timer for driving a shutter
      *
      * @param strChannel		String of the channel
      * @param Shutter_id		Shutter (1..4)
      * @param diffTime 			Time in msec to drive
      * @param updatePos			Shall the pos be updated at the end?
-     *============================================================================================*/
+     */
+    //============================================================================================
     private void StartTimer(String strChannel , int Shutter_id, int diffTime, boolean updatePos)
     {
     	Timer t = Shutter_Timers[Shutter_id];
@@ -429,14 +447,15 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     }
     
    
-    
-    /**==========================================================================================
-    * void handleCommand_StopMove(String strChannel, Command command, boolean bUpdatePos)
+    //==========================================================================================
+    /**
+    * Handler for stopping a shutter
     *
     * @param strChannel		String of the channel
     * @param command		Command to be handled
     * @param bUpdatePos		Boolean: Shall the pos be updated (true/false)
-    * ==========================================================================================*/
+    */
+    // ==========================================================================================
     public void handleCommand_StopMove(String strChannel, Command command, boolean bUpdatePos)
     {	
 		int diffValue = 0;
@@ -480,12 +499,14 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
 			
     }
   
-    /** ==================================================================
-     *  void HandleShutterStop(int ShutterId, int diffValue)
+    //==================================================================
+    /** 
+     *  Stop a shutter, use the diff-Value
      *  
      * @param ShutterId 
      * @param diffValue
-     ===================================================================== */
+     */
+    //===================================================================== 
     void HandleShutterStop(int ShutterId, int diffValue)
     {
 		if (Shutter_directions[ShutterId] == cmdShutter_Up)   // Shutter up
@@ -512,13 +533,18 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
   	
     }
     
-    /**=================================================================================
-    //  int CalculateDiffPos(String strChannel)
-    //
-    //   x           diffTime
-    //   ----    =  ----------          x =(diffTime * 100) / Drivetime (difftime = s)
-    //   100         Drivetime          x =(diffTime / 10)  / Drivetime (difftime = ms)
-    //==================================================================================*/
+    //=================================================================================
+    /**
+     *  Calculate a DiffPos with a diff-Time
+     *
+     *   x           diffTime
+     *   ----    =  ----------          x =(diffTime * 100) / Drivetime (difftime = s)
+     *   100         Drivetime          x =(diffTime / 10)  / Drivetime (difftime = ms)
+     *   
+     * @param 	strChannel		shutter 1..4
+     * @return  calculated diff
+    */
+    //==================================================================================
     int CalculateDiffPos(String strChannel)
     {
 		long diffTime = 0;
@@ -539,13 +565,15 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
 		return (int)x;
     }
     
-    /** ========================================
-     * int ChannelIdFromString(String strChannel)
+    //===========================================
+    /** 
+     * Retturn the channel-id from a channel-string
      * 
      * 
      * @param strChannel
-     * @return
-     * =========================================*/
+     * @return	channel-id
+     */
+    // =========================================
     private int ChannelIdFromString(String strChannel)
     {
     	int ret = 0;
@@ -561,10 +589,14 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
 		return ret;
     }
     
-    /**===================================================================
-    // void handleCommand_OnOff(String strChannel, Command command)
-    //
-    //===================================================================*/
+    //===================================================================
+    /**
+     * handler for Command_OnOff
+     *
+     * @param 	strChannel	string of channel
+     * @param 	command		on or off
+    */
+    //===================================================================
     private void handleCommand_OnOff(String strChannel, Command command)
     {
 		if (command.equals(OnOffType.ON))
@@ -652,10 +684,14 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     	
     }
  
-    /**===================================================================
-    // void handleCommand_Refresh(String strChannel, Command command)
-    // 
-    //===================================================================*/
+    //===================================================================
+    /**
+     * Handler for Command Refresh
+     * 
+     * @param 	strChannel	string of channel
+     * @param 	channelUID	id of channel
+    */
+    //===================================================================
     private void handleCommand_Refresh(String strChannel, ChannelUID channelUID)
     {
 		int val = 0;
