@@ -3,5 +3,6 @@
   <service>
     <provide interface="org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory"/>
   </service>
+  <reference name="SerialPortManager" interface="org.eclipse.smarthome.io.transport.serial.SerialPortManager" bind="setSerialPortManager"/>
   <implementation class="org.openhab.binding.lcnserial.internal.LCNSerialHandlerFactory"/>
 </scr:component>

@@ -106,7 +106,7 @@ public class LCNSerialHandler extends BaseThingHandler
 		} 
 		catch (InterruptedException | IOException e) 
 		{
-        	logger.error("LCN-Bus could be read out {}", e );
+        	logger.error("LCN-Bus could not be read out {}", e );
 		}
     
 		logger.info("Update ThingStatus LCNSerial: ok");

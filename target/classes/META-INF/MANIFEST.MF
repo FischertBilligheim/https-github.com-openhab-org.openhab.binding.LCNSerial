@@ -1,6 +1,6 @@
 Manifest-Version: 1.0
 Automatic-Module-Name: org.openhab.binding.lcnserial
-Bnd-LastModified: 1561664032437
+Bnd-LastModified: 1562273806874
 Bundle-Description: "This project contains the official add-ons of ope
  nHAB"
 Bundle-License: "Eclipse Public License 2.0";link="https://www.eclipse
@@ -15,19 +15,21 @@ Bundle-SCM: url="https://github.com/openhab/openhab2-addons/org.openha
  b.addons.reactor.bundles/org.openhab.binding.lcnserial",tag=HEAD
 Bundle-SymbolicName: org.openhab.binding.lcnserial
 Bundle-Vendor: openHAB.org
-Bundle-Version: 2.5.0.201906271933
+Bundle-Version: 2.5.0.201907042056
 Created-By: 1.8.0_211 (Oracle Corporation)
 Import-Package: org.eclipse.smarthome.core.library.types,org.eclipse.s
  marthome.core.thing,org.eclipse.smarthome.core.thing.binding,org.ecli
- pse.smarthome.core.types,gnu.io;version="[3.14,4)",org.slf4j;version=
- "[1.7,2)"
+ pse.smarthome.core.types,org.eclipse.smarthome.io.transport.serial,gn
+ u.io;version="[3.14,4)",org.slf4j;version="[1.7,2)"
 Private-Package: ESH-INF.binding,ESH-INF.thing,org.openhab.binding.lcn
  serial.internal,org.openhab.binding.lcnserial.internal.handler
 Provide-Capability: osgi.service;objectClass:List<String>="org.eclipse
  .smarthome.core.thing.binding.ThingHandlerFactory"
-Require-Capability: osgi.extender;filter:="(&(osgi.extender=osgi.compo
- nent)(version>=1.4.0)(!(version>=2.0.0)))",osgi.ee;filter:="(&(osgi.e
- e=JavaSE)(version=1.8))"
+Require-Capability: osgi.service;filter:="(objectClass=org.eclipse.sma
+ rthome.io.transport.serial.SerialPortManager)";effective:=active,osgi
+ .extender;filter:="(&(osgi.extender=osgi.component)(version>=1.4.0)(!
+ (version>=2.0.0)))",osgi.ee;filter:="(&(osgi.ee=JavaSE)(version=1.8))
+ "
 Service-Component: OSGI-INF/org.openhab.binding.lcnserial.internal.LCN
  SerialHandlerFactory.xml
 Tool: Bnd-4.2.0.201903051501

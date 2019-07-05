@@ -22,8 +22,13 @@ import org.eclipse.smarthome.core.thing.ThingTypeUID;
 import org.eclipse.smarthome.core.thing.binding.BaseThingHandlerFactory;
 import org.eclipse.smarthome.core.thing.binding.ThingHandler;
 import org.eclipse.smarthome.core.thing.binding.ThingHandlerFactory;
+
+import org.eclipse.smarthome.io.transport.serial.SerialPortManager;
+import org.eclipse.smarthome.io.transport.serial.SerialPortIdentifier;
+
 import org.openhab.binding.lcnserial.internal.handler.LCNSerialEventHandlers;
 import org.osgi.service.component.annotations.Component;
+import org.osgi.service.component.annotations.Reference;
 
 
 /**
@@ -48,6 +53,17 @@ public class LCNSerialHandlerFactory extends BaseThingHandlerFactory
 
     private static final Set<ThingTypeUID> SUPPORTED_THING_TYPES_UIDS = Collections.singleton(LCNSerialBindingConstants.THING_TYPE_LCNSERIAL);
 
+    private @NonNullByDefault({}) SerialPortManager serialPortManager;
+    
+    @Reference
+    protected void setSerialPortManager(final SerialPortManager serialPortManager) 
+    {
+        this.serialPortManager = serialPortManager;
+        
+        SerialPortIdentifier serPortIdentifier = this.serialPortManager.getIdentifier("COM3");
+        String owner = serPortIdentifier.getCurrentOwner();
+    }
+    
        
     //==========================================================
     /**
