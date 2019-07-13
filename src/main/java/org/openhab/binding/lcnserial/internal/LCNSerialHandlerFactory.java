@@ -58,10 +58,10 @@ public class LCNSerialHandlerFactory extends BaseThingHandlerFactory
     @Reference
     protected void setSerialPortManager(final SerialPortManager serialPortManager) 
     {
-        this.serialPortManager = serialPortManager;
+//        this.serialPortManager = serialPortManager;
         
-        SerialPortIdentifier serPortIdentifier = this.serialPortManager.getIdentifier("COM3");
-        String owner = serPortIdentifier.getCurrentOwner();
+//        SerialPortIdentifier serPortIdentifier = this.serialPortManager.getIdentifier("COM3");
+//        String owner = serPortIdentifier.getCurrentOwner();
     }
     
        

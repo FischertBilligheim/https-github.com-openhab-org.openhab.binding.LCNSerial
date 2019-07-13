@@ -81,28 +81,40 @@ public class LCNSerialEventHandlers extends LCNSerialHandler
     	Shutter_enabled[idShutter2] = deviceConfig.Shutter2_enabled;
     	Shutter_enabled[idShutter3] = deviceConfig.Shutter3_enabled;
     	Shutter_enabled[idShutter4] = deviceConfig.Shutter4_enabled;
+    	
+    	
+    	if ( Shutter_enabled[idShutter1] == true)
+    	{
+        	Shutter_driveTimes[idShutter1]     = deviceConfig.Shutter1_drivetime;
+        	Shutter_overallTimes[idShutter1]   = deviceConfig.Shutter1_overalltime;
+        	Shutter_endPosPercent[idShutter1]  = (deviceConfig.Shutter1_overalltime * 100 ) / deviceConfig.Shutter1_drivetime;
+    		Shutter_Timers[idShutter1]         = new Timer(true); // timer for shutter1        	
+    	}
     	 	
-    	Shutter_driveTimes[idShutter1] = deviceConfig.Shutter1_drivetime;
-    	Shutter_driveTimes[idShutter2] = deviceConfig.Shutter2_drivetime;
-    	Shutter_driveTimes[idShutter3] = deviceConfig.Shutter3_drivetime;
-    	Shutter_driveTimes[idShutter4] = deviceConfig.Shutter4_drivetime;
+    	if ( Shutter_enabled[idShutter2] == true)
+    	{
+        	Shutter_driveTimes[idShutter2] 		= deviceConfig.Shutter2_drivetime;
+        	Shutter_overallTimes[idShutter2] 	= deviceConfig.Shutter2_overalltime;
+        	Shutter_endPosPercent[idShutter2] 	= (deviceConfig.Shutter2_overalltime * 100 ) / deviceConfig.Shutter2_drivetime;
+    		Shutter_Timers[idShutter2] 			= new Timer(true); // timer for shutter2        	
+    	}
     	
-    	Shutter_overallTimes[idShutter1] = deviceConfig.Shutter1_overalltime;
-    	Shutter_overallTimes[idShutter2] = deviceConfig.Shutter2_overalltime;
-    	Shutter_overallTimes[idShutter3] = deviceConfig.Shutter3_overalltime;
-    	Shutter_overallTimes[idShutter4] = deviceConfig.Shutter4_overalltime;    	
-    	
-    	Shutter_endPosPercent[idShutter1] = (deviceConfig.Shutter1_overalltime * 100 ) / deviceConfig.Shutter1_drivetime;
-    	Shutter_endPosPercent[idShutter2] = (deviceConfig.Shutter2_overalltime * 100 ) / deviceConfig.Shutter2_drivetime;
-    	Shutter_endPosPercent[idShutter3] = (deviceConfig.Shutter3_overalltime * 100 ) / deviceConfig.Shutter3_drivetime;
-    	Shutter_endPosPercent[idShutter4] = (deviceConfig.Shutter4_overalltime * 100 ) / deviceConfig.Shutter4_drivetime; 
-    	
-    	
-		Shutter_Timers[idShutter1] = new Timer(true); // timer for shutter1
-		Shutter_Timers[idShutter2] = new Timer(true); // timer for shutter2
-		Shutter_Timers[idShutter3] = new Timer(true); // timer for shutter3
-		Shutter_Timers[idShutter4] = new Timer(true); // timer for shutter4
-    	
+    	if ( Shutter_enabled[idShutter3] == true)
+    	{
+        	Shutter_driveTimes[idShutter3] 		= deviceConfig.Shutter3_drivetime;
+        	Shutter_overallTimes[idShutter3] 	= deviceConfig.Shutter3_overalltime;        	
+        	Shutter_endPosPercent[idShutter3] 	= (deviceConfig.Shutter3_overalltime * 100 ) / deviceConfig.Shutter3_drivetime;
+    		Shutter_Timers[idShutter3]			= new Timer(true); // timer for shutter3       
+    	}
+
+
+    	if ( Shutter_enabled[idShutter4] == true)
+    	{
+	    	Shutter_driveTimes[idShutter4] 		= deviceConfig.Shutter4_drivetime;
+	     	Shutter_overallTimes[idShutter4] 	= deviceConfig.Shutter4_overalltime;    	
+	     	Shutter_endPosPercent[idShutter4] 	= (deviceConfig.Shutter4_overalltime * 100 ) / deviceConfig.Shutter4_drivetime; 
+	 		Shutter_Timers[idShutter4] 			= new Timer(true); // timer for shutter4
+    	}
     }
 	
     //================================================================================
